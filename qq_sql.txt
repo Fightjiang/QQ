@@ -1,0 +1,40 @@
+create table user(
+    `id` int auto_increment,
+    `username` varchar(20) not null,
+    `password` varchar(20) not null,
+    primary key(`id`)
+)charset = utf8 ; 
+
+create table friend(
+    `fid1` int not null ,
+    `fid2` int not null , 
+    `fid1name` varchar(20),
+    `fid2name` varchar(20)
+)charset = utf8 ;
+
+insert into user(username,password) values("test","123456") ;
+insert into user(username,password) values("NO2","123456") ;
+insert into user(username,password) values("NO3","123456") ;
+insert into user(username,password) values("NO4","123456") ;
+
+
+insert into friend(fid1,fid2,fid2name) values(1,2,"NO1");
+insert into friend(fid1,fid2,fid2name) values(1,4,"NO2");
+insert into friend(fid1,fid2,fid2name) values(1,5,"NO3");
+insert into friend(fid1,fid2,fid2name) values(2,1,"test");
+insert into friend(fid1,fid2,fid2name) values(4,1,"test");
+insert into friend(fid1,fid2,fid2name) values(5,1,"test");
+
+
+create table news(
+    `fid1` int,
+    `fid2` int,
+    `flag` int,
+    `time` varchar(20),
+    `info` varchar(200)
+)charset = utf8;
+
+// flag 累计消息条数
+// 加好友操作是双方都会加上，不需要同意的过程。
+// 删除好友是双方都删除，历史消息记录也删除。
+// 查找好友，按照姓名查找
